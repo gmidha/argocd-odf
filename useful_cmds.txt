@@ -1,0 +1,20 @@
+for i in $(oc get nodes | grep ocs | awk {'print $1'} | grep -v Name)                                          
+do              
+oc label node $i cluster.ocs.openshift.io/openshift-storage=''
+done
+
+oc describe storagecluster ocs-storagecluster -n openshift-storage
+
+oc get pods -n openshift-storage
+
+argocd login $(oc get route openshift-gitops-server -o jsonpath='{.spec.host}') --insecure --username admin --password $(oc extract secret/openshift-gitops-cluster --to=- | tail -1)
+
+argocd app list
+
+oc get cephcluster -n openshift-storage
+
+oc get pvc -n openshift-storage
+
+oc exec -it rook-ceph-tools-5b56d8f49c-nkwd8 -n openshift-storage -- bash
+ceph -s
+ceph osd tree
