@@ -3,7 +3,7 @@
 ##
 
 ## Helm Repo GIT
-helmRepoUrl: https://github.com/likid0/argocd-odf
+helmRepoUrl: https://github.com/gmidha/argocd-odf
 
 # ArgoCD apps definition
 apps:
@@ -20,5 +20,4 @@ namespaces:
   - gitops-argocd
 
 argoclusters:
-  - cluster-pro
   - cluster-dev
