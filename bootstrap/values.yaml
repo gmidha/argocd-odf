@@ -8,7 +8,7 @@ helmRepoUrl: https://github.com/gmidha/argocd-odf
 # ArgoCD apps definition
 apps:
   deploy-odf:
-    branch: applicationsets
+    branch: develop_as
     enabled: true
     path: odf/
     autosync: true
